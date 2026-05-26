@@ -1,0 +1,55 @@
+{
+  "$schema": "https://developers.reddit.com/schema/config-file.v1.json",
+  "name": "repostradar-app",
+  "permissions": {
+    "redis": true,
+    "reddit": {
+      "enable": true,
+      "scope": "moderator"
+    }
+  },
+  "post": {
+    "dir": "public",
+    "entrypoints": {
+      "default": {
+        "inline": true,
+        "entry": "splash.html"
+      },
+      "game": {
+        "entry": "game.html"
+      }
+    }
+  },
+  "server": {
+    "dir": "dist/server",
+    "entry": "index.js"
+  },
+  "menu": {
+    "items": [
+      {
+        "label": "RepostRadar: find duplicates",
+        "description": "Scan this post for likely duplicates in the subreddit",
+        "location": "post",
+        "forUserType": "moderator",
+        "endpoint": "/internal/menu/scan-post"
+      },
+      {
+        "label": "RepostRadar: stats",
+        "description": "Show repost stats for this subreddit",
+        "location": "subreddit",
+        "forUserType": "moderator",
+        "endpoint": "/internal/menu/stats"
+      }
+    ]
+  },
+  "triggers": {
+    "onAppInstall": "/internal/triggers/app-install"
+  },
+  "scripts": {
+    "dev": "node --experimental-strip-types ./tools/build.ts --watch",
+    "build": "node --experimental-strip-types ./tools/build.ts --minify"
+  },
+  "dev": {
+    "subreddit": "repostradar_app_dev"
+  }
+}

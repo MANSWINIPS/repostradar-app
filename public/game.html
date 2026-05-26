@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" type="text/css" href="game.css" />
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height, user-scalable=0"
+    />
+    <title>RepostRadar</title>
+  </head>
+  <body>
+    <main class="app">
+      <header class="header">
+        <div class="header-text">
+          <h1 id="title" class="title">🛰️ RepostRadar</h1>
+          <p id="subtitle" class="subtitle">Scanning…</p>
+        </div>
+        <div class="header-actions">
+          <button id="stats-button" class="ghost-btn" type="button">Stats</button>
+          <button id="refresh-button" class="ghost-btn" type="button">Re-scan</button>
+        </div>
+      </header>
+
+      <section class="current-section">
+        <h2 class="section-label">This post</h2>
+        <div id="current-card" class="current-card"></div>
+      </section>
+
+      <section class="candidates-section">
+        <h2 class="section-label">Likely duplicates</h2>
+        <div id="empty-state" class="empty-state" style="display:none">
+          <div class="empty-emoji">✅</div>
+          <div class="empty-text">No likely duplicates found in r/&lt;sub&gt;.</div>
+          <div class="empty-sub">Reddit's duplicate index and the top 100 recent + top 100 yearly posts were checked.</div>
+        </div>
+        <ol id="candidates" class="candidates"></ol>
+      </section>
+
+      <div id="remove-row" class="remove-row" style="display:none">
+        <span id="picked-label" class="picked-label">Pick an original above.</span>
+        <button id="remove-button" class="danger-btn" type="button">Remove as repost</button>
+      </div>
+
+      <div id="stats-panel" class="stats-panel">
+        <div class="stats-card">
+          <div class="stats-header">
+            <h2>Repost stats</h2>
+            <button id="close-stats" class="ghost-btn" type="button">Close</button>
+          </div>
+          <div id="stats-body" class="stats-body">Loading…</div>
+        </div>
+      </div>
+
+      <div id="toast" class="toast" data-kind="success"></div>
+    </main>
+    <script type="module" src="game.js" defer></script>
+  </body>
+</html>
