@@ -6,6 +6,38 @@ RepostRadar is a Devvit app for the [Reddit Mod Tools & Migration Hackathon 2026
 
 ---
 
+## How judges install RepostRadar
+
+RepostRadar is published to the **Devvit App Directory** as `repostradar-app`. Once the app clears Reddit's review queue, any Reddit user can install it on a subreddit they moderate.
+
+### Install via the developer portal
+
+1. While logged into Reddit, open **https://developers.reddit.com/apps/repostradar-app**.
+2. On the app page, use the **Install** action and pick a subreddit you moderate from the dropdown.
+3. Confirm the install.
+
+If you don't moderate a subreddit yet, create a private test sub in 10 seconds at https://www.reddit.com/subreddits/create, then install onto that.
+
+### Install via the Devvit CLI
+
+From any machine with Node.js 22+:
+
+```bash
+npx devvit login            # opens a browser, log in with your Reddit account
+npx devvit install repostradar-app r/<your_subreddit>
+```
+
+> **Note for early judging windows:** if the app is still in Reddit's review queue when you click the link, the page may show "not allowed" or "under review." In that case the live demo install on **r/RepostRadarTest_NI** lets you browse existing scan posts immediately, and the install link will start working as soon as review clears (typically within hours).
+
+### Then exercise it
+
+1. Open your installed subreddit on Reddit (web or mobile app).
+2. Make 2 posts with similar titles (e.g. "Best practices for X" and "What are the best practices for X?").
+3. Open the second post → tap the `⋮` menu → tap **`RepostRadar: find duplicates`**.
+4. A new `🛰️ RepostRadar scan: …` post appears in the feed — tap the splash, see the first post listed as a likely duplicate, tap **Use as original**, then **Remove as repost**. The first post is removed with a stickied citation comment.
+
+---
+
 ## The problem
 
 Reposts are the single most reported issue in most large subreddits. The current mod workflow to handle them is brutal:
